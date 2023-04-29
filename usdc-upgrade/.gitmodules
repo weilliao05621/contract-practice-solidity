@@ -1,0 +1,3 @@
+[submodule "usdc-upgrade/lib/forge-std"]
+	path = usdc-upgrade/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

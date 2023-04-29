@@ -7,3 +7,6 @@
 [submodule "rug-pull-hw/lib/solmate"]
 	path = rug-pull-hw/lib/solmate
 	url = https://github.com/Rari-Capital/solmate
+[submodule "usdc-upgrade/lib/openzeppelin-contracts"]
+	path = usdc-upgrade/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts

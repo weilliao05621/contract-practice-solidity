@@ -1,3 +1,9 @@
 [submodule "usdc-upgrade/lib/forge-std"]
 	path = usdc-upgrade/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "rug-pull-hw/lib/forge-std"]
+	path = rug-pull-hw/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "rug-pull-hw/lib/solmate"]
+	path = rug-pull-hw/lib/solmate
+	url = https://github.com/Rari-Capital/solmate

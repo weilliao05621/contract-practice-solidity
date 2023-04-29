@@ -6,19 +6,16 @@ import "forge-std/console.sol";
 import "../src/USDCV2.sol";
 import "../src/IProxy.sol";
 
+/*
+    1. Fork setting in in foundry.toml
+*/ 
+
 contract USDCV2Test is Test {
     // Basic info of USDC
     address constant USDC_PROXY_CONTRACT = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address constant USDC_LOGIC_CONTRACT = 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF;
     address constant USDC_ADMIN = 0x807a96288A1A408dBC13DE2b1d087d10356395d2;
-    address constant MASTER_MINTER = 0xE982615d461DD5cD06575BbeA87624fda4e3de17;
-
-    // Fork network info
-    string constant MAINNET_RPC_URL = "https://mainnet.infura.io/v3/ee11e79fa3d94cac84f2325726a61ba0";
-    uint constant BLOCK_NUMBER = 17_150_125;
-
-    uint forkId =  vm.createFork(MAINNET_RPC_URL, BLOCK_NUMBER);
-
+ 
     // users
     address v2Owner;
     address user1;
@@ -40,22 +37,13 @@ contract USDCV2Test is Test {
     }
 
     function setUp() public {
-        // Fork Id
-        forkId = vm.createFork(MAINNET_RPC_URL, BLOCK_NUMBER);
-        vm.selectFork(forkId);
-
         // Create users
         v2Owner = makeAddr("AWS");
         user1 = makeAddr("Alice");
 
         // Deploy v2
-        vm.prank(v2Owner);
         usdcV2 = new USDCV2();
         newImplementation = address(usdcV2);
-    }
-
-    function test_SelectFork() public {
-        assertEq(vm.activeFork(), forkId, "forkId");
     }
 
     function test_UpgradeTo() public {

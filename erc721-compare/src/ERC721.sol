@@ -5,17 +5,14 @@ import "../lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract DemoErc721 is ERC721Enumerable {
-    uint256 maxBatchSize = 0;
-
-    constructor(uint256 _maxBatchSize) ERC721("Token", "TKN") {
-        require(_maxBatchSize > 0, "must set maxBatchSize");
-        maxBatchSize = _maxBatchSize;
-    }
+    constructor() ERC721("Token", "TKN") {}
 
     function mint(address to, uint256 quantity) public {
-        require(quantity <= maxBatchSize, "cannot mint more than maxBatchSize");
-        for (uint256 i = 0; i < quantity; i++) {
+        for (uint256 i = 0; i < quantity; ) {
             _safeMint(to, totalSupply());
+            unchecked {
+                ++i;
+            }
         }
     }
 }
